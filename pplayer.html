@@ -1,14 +1,43 @@
 <!doctype html>
 <html lang="en">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>Video Player</title>
+  <style>
+    /* Make the video responsive and ensure controls are visible */
+    html, body { margin:0; background:#000; }
+    .wrap { max-width: 1280px; margin: 0 auto; }
+    video { width:100%; height:auto; background:#000; display:block; }
+  </style>
 </head>
-<body style="margin:0;background:#000">
-  <video controls playsinline style="width:100%;max-width:100%;height:auto;background:#000">
-    <source src="Lesson-2025a.mp4" type="video/mp4">
-    Your browser does not support the video tag.
-  </video>
+<body>
+  <div class="wrap">
+    <video
+      id="lesson"
+      controls
+      controlsList="nodownload"
+      preload="metadata"
+      playsinline
+      poster="Lesson-2025a-poster.jpg"
+    >
+      <!-- Put your actual file path below -->
+      <source src="Lesson-2025a.mp4" type="video/mp4" />
+      <!-- Optional captions track (WebVTT) -->
+      <!-- <track kind="captions" src="Lesson-2025a.en.vtt" srclang="en" label="English"> -->
+      Your browser does not support the video tag.
+    </video>
+    <noscript>
+      <p style="color:#fff">
+        JavaScript is disabled. <a href="Lesson-2025a.mp4">Download the video</a>.
+      </p>
+    </noscript>
+  </div>
+
+  <script>
+    // Belt & suspenders: if something strips the attribute, re-apply it.
+    const v = document.getElementById('lesson');
+    if (!v.hasAttribute('controls')) v.setAttribute('controls', '');
+  </script>
 </body>
 </html>
