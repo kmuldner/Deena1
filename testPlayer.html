@@ -1,0 +1,26 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Video Player</title>
+  <style>
+    html, body { margin:0; background:#000; }
+    .wrap { max-width: 1280px; margin: 0 auto; padding: 0 0 24px; } /* <-- bottom padding */
+    video { width:100%; height:auto; background:#000; display:block; }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <video id="lesson" controls preload="metadata" playsinline>
+      <source src="Lesson-2025a.mp4" type="video/mp4">
+      Your browser does not support the video tag.
+    </video>
+  </div>
+  <script>
+    // Re-apply controls just in case anything strips it
+    const v = document.getElementById('lesson');
+    if (!v.hasAttribute('controls')) v.setAttribute('controls', '');
+  </script>
+</body>
+</html>
